@@ -15,7 +15,7 @@ namespace RestaurantRater.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your application description page 34.";
 
             return View();
         }

@@ -23,7 +23,10 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
+					<!--address bar is Home/Contact-->
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+					<!--So this is some how tying to the address bar the Index does not make me have home first-->
+					<li>@Html.ActionLink("Restaurant", "Index", "Restaurant")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
