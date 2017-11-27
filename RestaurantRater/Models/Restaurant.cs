@@ -20,6 +20,6 @@ namespace RestaurantRater.Models
     //Handles relationship w/DB including querying 
     public class RestaurantDBContext : DbContext
     {
-        public DbSet<Restaurant> Resturants { get; set; }
+        public DbSet<Restaurant> Restaurants { get; set; }
     }
 }
