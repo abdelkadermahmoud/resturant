@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -43,6 +44,8 @@ namespace RestaurantRater.Controllers
             return View(restaurant);
         }
 
+
+        //edit restaurant post
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -53,6 +56,21 @@ namespace RestaurantRater.Controllers
             if (restaurant == null)
             {
                 return HttpNotFound();
+            }
+            return View(restaurant);
+        }
+
+        //Post: Updated Resturant info
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "RestaurantID,Name,Address,Rating")] Restaurant restaurant)
+        {
+            if(ModelState.IsValid)
+            {
+                //this requires using System.Data.Entity;
+                db.Entry(restaurant).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             return View(restaurant);
         }
