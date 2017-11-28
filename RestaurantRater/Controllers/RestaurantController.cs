@@ -44,7 +44,7 @@ namespace RestaurantRater.Controllers
             return View(restaurant);
         }
 
-
+     
         //edit restaurant post
         public ActionResult Edit(int? id)
         {
@@ -107,6 +107,22 @@ namespace RestaurantRater.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        //Details
+        //Dont need a Post method because we only want to view it
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Restaurant restaurant = db.Restaurants.Find(id);
+            if (restaurant == null)
+            {
+                return HttpNotFound();
+            }
+            return View(restaurant);
         }
     }
 }
